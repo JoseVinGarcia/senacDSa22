@@ -130,9 +130,9 @@ try:
     # Terceira posição
     plt.subplot(2, 2, 3)
     plt.text(0.35, 0.9, "MEDIDAS DE TENDÊNCIA CENTRAL:", fontsize=12)
-    plt.text(0.3, 0.8, f'Média: {media_roubo}', fontsize=12)
-    plt.text(0.3, 0.7, f'Mediana: {mediana_roubo}', fontsize=12)
-    plt.text(0.3, 0.6, f'Distância: {dist_roubo}', fontsize=12)
+    plt.text(0.4, 0.8, f'Média: {media_roubo}', fontsize=12)
+    plt.text(0.4, 0.7, f'Mediana: {mediana_roubo}', fontsize=12)
+    plt.text(0.4, 0.6, f'Distância: {dist_roubo}', fontsize=12)
     plt.text(1.0, 0.9, "MEDIDAS DE POSIÇÃO E DISPERSÃO:", fontsize=12)
     plt.text(1.1, 0.8, f'Menor valor: {minimo}', fontsize=12) 
     plt.text(1.1, 0.7, f'Limite inferior: {limite_inferior}', fontsize=12)
