@@ -1,0 +1,5 @@
+1. Os batalhões da PM com mais registros de roubos em coletivos são os batalhões de Duque de Caxias, com 1495 roubos, e o de São João de Meriti, com 1094 roubos.
+
+2. Não temos como criar uma representação média desses números, pois temos uma dispersão muito grande de dados. Podemos notar isso na distância entre a média e mediana, só isso já é um indicativo que tem algo de errado.
+
+3. 

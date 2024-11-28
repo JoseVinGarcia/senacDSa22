@@ -23,7 +23,7 @@ try:
     # Separando, agrupando e filtrando dados
     df_roubo_coletivos = pd.merge(tb_base, tb_roubo_coletivos, on="cod_ocorrencia")
     df_roubo_coletivos = df_roubo_coletivos[(df_roubo_coletivos["ano"]>=2022) & (df_roubo_coletivos["ano"]<=2023)]
-    df_roubo_coletivos = df_roubo_coletivos[["aisp","roubo_em_coletivo"]]
+    df_roubo_coletivos = df_roubo_coletivos[["aisp","munic","roubo_em_coletivo"]]
     df_roubo_coletivos = df_roubo_coletivos.groupby(["aisp"]).sum(["roubo_em_coletivo"]).reset_index()
     
     # df_roubo_coletivos_final
@@ -74,8 +74,8 @@ except Exception as e:
 try:
     print("="*30)
     print("\nMEDIDAS DE TENDÊNCIA CENTRAL")
-    print(f"Média de recuperação de veículos: {media_roubo}")
-    print(f"Mediana de recuperação de veículos: {mediana_roubo}")
+    print(f"Média de roubo em coletivos: {media_roubo}")
+    print(f"Mediana de roubo em coletivos: {mediana_roubo}")
     print(f"Distância entre média e mediana: {dist_roubo}%")
 
     print("\nMEDIDAS DE POSIÇÃO E DISPERSÃO")
@@ -129,32 +129,33 @@ try:
 
     # Terceira posição
     plt.subplot(2, 2, 3)
-    plt.text(0.35, 0.9, "MEDIDAS DE TENDÊNCIA CENTRAL:", fontsize=12)
-    plt.text(0.4, 0.8, f'Média: {media_roubo}', fontsize=12)
-    plt.text(0.4, 0.7, f'Mediana: {mediana_roubo}', fontsize=12)
-    plt.text(0.4, 0.6, f'Distância: {dist_roubo}', fontsize=12)
-    plt.text(1.0, 0.9, "MEDIDAS DE POSIÇÃO E DISPERSÃO:", fontsize=12)
-    plt.text(1.1, 0.8, f'Menor valor: {minimo}', fontsize=12) 
-    plt.text(1.1, 0.7, f'Limite inferior: {limite_inferior}', fontsize=12)
-    plt.text(1.1, 0.6, f'Q1: {q1}', fontsize=12)
-    plt.text(1.1, 0.5, f'Q3: {q3}', fontsize=12)
-    plt.text(1.1, 0.4, f'Limite superior: {limite_superior}', fontsize=12)
-    plt.text(1.1, 0.3, f'Maior valor: {maximo}', fontsize=12)
-    plt.text(1.1, 0.2, f'Amplitude Total: {amplitude}', fontsize=12)
-    plt.text(1.1, 0.1, f'Amplitude Total: {amplitude}', fontsize=12)
-    plt.title("Medidas Observadas:")
+    plt.text(0.5, 0.9, "MEDIDAS DE TENDÊNCIA CENTRAL:", fontsize=12, ha='center')
+    plt.text(0.5, 0.8, f'Média: {media_roubo}', fontsize=10, ha='center')
+    plt.text(0.5, 0.7, f'Mediana: {mediana_roubo}', fontsize=10, ha='center')
+    plt.text(0.5, 0.6, f'Distância: {dist_roubo}', fontsize=10, ha='center')
+    plt.text(0.5, 0.4, "AISPS COM NÚMERO MUITO ACIMA DO COMUM:", fontsize=12, ha='center')
+    plt.text(0.5, 0.3, f'Duque de Caxias: 1495 roubos', fontsize=10, ha='center')
+    plt.text(0.5, 0.2, f'São João de Meriti: 1094 roubos', fontsize=10, ha='center')
+    plt.text(1.5, 0.9, "MEDIDAS DE POSIÇÃO E DISPERSÃO:", fontsize=12, ha='center')
+    plt.text(1.5, 0.8, f'Mínimo: {minimo}', fontsize=10, ha='center')
+    plt.text(1.5, 0.7, f'Limite inferior: {limite_inferior}', fontsize=10, ha='center')
+    plt.text(1.5, 0.6, f'Q1: {q1}', fontsize=10, ha='center')
+    plt.text(1.5, 0.5, f'Q3: {q3}', fontsize=10, ha='center')
+    plt.text(1.5, 0.4, f'IQR: {iqr}', fontsize=10, ha='center')
+    plt.text(1.5, 0.3, f'Limite superior: {limite_superior}', fontsize=10, ha='center')
+    plt.text(1.5, 0.2, f'Máximo: {maximo}', fontsize=10, ha='center')
+    plt.text(1.5, 0.1, f'Amplitude Total: {amplitude}', fontsize=10, ha='center')
     plt.axis("off")
 
     # Quarta posição
     plt.subplot(2, 2, 4)
-    plt.text(0.35, 0.9, 'MEDIDAS DE DISTRIBUIÇÃO:', fontsize=12)
-    plt.text(0.3, 0.8, f'Assimetria: {assimetria}', fontsize=12)
-    plt.text(0.3, 0.7, f'Curtose: {curtose}', fontsize=12)
-    plt.text(0.3, 0.6, f'Variância: {variancia_roubo}', fontsize=12)
-    plt.text(0.3, 0.5, f'Desvio Padrão: {desvio_padrao}', fontsize=12)
-    plt.text(0.3, 0.4, f'Distância entre Variância e Média: {dist_var_med}', fontsize=12)
-    plt.text(0.3, 0.3, f'Coeficiente de Variação: {coeficiente_variacao}', fontsize=12)
-    plt.title("Demais Medidas:")
+    plt.text(0.5, 0.9, 'MEDIDAS DE DISTRIBUIÇÃO:', fontsize=12, ha='center')
+    plt.text(0.5, 0.8, f'Assimetria: {assimetria}', fontsize=10, ha='center')
+    plt.text(0.5, 0.7, f'Curtose: {curtose}', fontsize=10, ha='center')
+    plt.text(0.5, 0.6, f'Variância: {variancia_roubo}', fontsize=10, ha='center')
+    plt.text(0.5, 0.5, f'Desvio Padrão: {desvio_padrao}', fontsize=10, ha='center')
+    plt.text(0.5, 0.4, f'Distância entre Variância e Média: {dist_var_med}', fontsize=10, ha='center')
+    plt.text(0.5, 0.3, f'Coeficiente de Variação: {coeficiente_variacao}', fontsize=10, ha='center')
     plt.axis("off")
 
     plt.tight_layout()
