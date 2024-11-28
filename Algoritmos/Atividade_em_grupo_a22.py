@@ -43,6 +43,7 @@ try:
 
     # Medidas de Posição
     q1 = np.quantile(array_roubo, 0.25)
+    q2 = np.quantile(array_roubo, 0.50)
     q3 = np.quantile(array_roubo, 0.75)
     iqr = q3 - q1
     limite_superior = q3 + (1.5 * iqr)
@@ -82,6 +83,7 @@ try:
     print(f"Mínimo: {minimo}")
     print(f"Limite inferior: {limite_inferior}")
     print(f"Q1: {q1}")
+    print(f"Q2: {q2}")
     print(f"Q3: {q3}")
     print(f"IQR: {iqr}")
     print(f"Limite superior: {limite_superior}")
@@ -140,11 +142,12 @@ try:
     plt.text(1.5, 0.8, f'Mínimo: {minimo}', fontsize=10, ha='center')
     plt.text(1.5, 0.7, f'Limite inferior: {limite_inferior}', fontsize=10, ha='center')
     plt.text(1.5, 0.6, f'Q1: {q1}', fontsize=10, ha='center')
-    plt.text(1.5, 0.5, f'Q3: {q3}', fontsize=10, ha='center')
-    plt.text(1.5, 0.4, f'IQR: {iqr}', fontsize=10, ha='center')
-    plt.text(1.5, 0.3, f'Limite superior: {limite_superior}', fontsize=10, ha='center')
-    plt.text(1.5, 0.2, f'Máximo: {maximo}', fontsize=10, ha='center')
-    plt.text(1.5, 0.1, f'Amplitude Total: {amplitude}', fontsize=10, ha='center')
+    plt.text(1.5, 0.5, f'Q2: {q2}', fontsize=10, ha='center')
+    plt.text(1.5, 0.4, f'Q3: {q3}', fontsize=10, ha='center')
+    plt.text(1.5, 0.3, f'IQR: {iqr}', fontsize=10, ha='center')
+    plt.text(1.5, 0.2, f'Limite superior: {limite_superior}', fontsize=10, ha='center')
+    plt.text(1.5, 0.1, f'Máximo: {maximo}', fontsize=10, ha='center')
+    plt.text(1.5, 0.0, f'Amplitude Total: {amplitude}', fontsize=10, ha='center')
     plt.axis("off")
 
     # Quarta posição
