@@ -4,14 +4,24 @@ import numpy as np
 import os
 import matplotlib.pyplot as plt
 from sqlalchemy import create_engine
+# AULA 23 - IMPORTANDO DOTENV (biblioteca que carrega os dados do arquivo .env) PARA ESCONDER AS SENHAS
+from dotenv import load_dotenv
 
-# Dados para ler SQL
-host = "localhost"
-user = "root"
-password = "root"
-database = "bd_aula11"
+# TRY 0: AULA 23 - GUARDANDO AS SENHAS EM OUTRO LOCAL
+try:
+    # Carrega variaveis de ambiente do arquivo .env
+    load_dotenv()
 
-engine = create_engine(f"mysql+pymysql://{user}:{password}@{host}/{database}")
+    # OBtendo variaveis de ambiente
+    host = os.getenv('DB_HOST')
+    port = os.getenv('DB_PORT')
+    user = os.getenv('DB_USER')
+    password = os.getenv('DB_PASSWORD')
+    database = os.getenv('DB_DATABASE')
+
+    engine = create_engine(f"mysql+pymysql://{user}:{password}@{host}/{database}")
+except Exception as e:
+    print(f"Erro {e}")
 
 # TRY 1: COLETANDO E PROCESSANDO DADOS
 try:
